@@ -68,7 +68,7 @@ app.post('/api/v1/users', (req: Request, res: Response) => {
 app.delete('/api/v1/users:id', (req: Request, res: Response) => {
     const id = parseInt( req.params.id);
     const index = users.findIndex(element => element.id === id);
-    if (!index){
+    if (index === -1){
         res.status(404).json({
             success: true,
             message: `User not found`,
@@ -84,6 +84,8 @@ app.delete('/api/v1/users:id', (req: Request, res: Response) => {
 app.listen(PORT, () => {
     console.log('Server is running');
 });
+
+
 //Kodus teha API 4 asjaga. 
 //Tunniplaanis nt: Klassiruumid/õppejõud/kuupäevad/Ained. 
 //Endpoindid lugemiseks, loomiseks, kustutamiseks ja parandamiseks.
